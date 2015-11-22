@@ -1,0 +1,11 @@
+defaults: &defaults
+  client_version: 1.0.0
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults

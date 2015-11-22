@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery_ujs
-//= require turbolinks
+//= require fabric
+//= require ./beer_napkin/beer
+//= require ./beer_napkin/util
 //= require_tree .
