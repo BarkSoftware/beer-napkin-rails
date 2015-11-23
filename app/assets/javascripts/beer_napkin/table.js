@@ -1,12 +1,11 @@
 (function() {
   beer.Table = beer.util.createClass({
-    initialize: function(selector) {
+    initialize: function(selector, options) {
+      this.options = options || beer.default_options;
       this.element = $(selector);
-      this.element.append("<canvas id='beer-menu'></canvas>");
-      this.element.append("<canvas id='beer-napkin'></canvas>");
-      this.element.append("<canvas id='beer-bottle'></canvas>");
-      this.menu = new beer.Menu();
-      this.napkin = new beer.Napkin();
+      this.menu = new beer.Menu(this);
+      this.napkin = new beer.Napkin(this);
+      this.bottle = new beer.Bottle(this);
     }
   });
 })();

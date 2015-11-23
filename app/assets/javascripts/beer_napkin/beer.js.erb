@@ -1,1 +1,21 @@
-var beer = beer || { version: "<%= Settings.client_version %>" };
+var beer = beer || {
+  version: "<%= Settings.client_version %>",
+  assets: {},
+  default_options: {
+    assets: [
+      { type: 'Button', collection: 'wireframe' }
+    ],
+    menu: {
+      width: 200,
+      height: $(window).height() - 80
+    },
+    napkin: {
+      width: $(window).width() - 200,
+      height: $(window).height() - 80
+    },
+    bottle: {
+      height: 80,
+      width: $(window).width()
+    }
+  }
+};

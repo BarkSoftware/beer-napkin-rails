@@ -11,7 +11,9 @@
 // about supported directives.
 //
 //= require jquery
+//= require twitter/bootstrap
 //= require fabric
+//= require lodash
 //= require ./beer_napkin/beer
 //= require ./beer_napkin/util
-//= require_tree .
+//= require_tree ./beer_napkin

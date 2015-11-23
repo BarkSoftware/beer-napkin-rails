@@ -1,0 +1,31 @@
+$border-color: #ccc;
+
+#beer-napkin, #beer-menu, #beer-bottle {
+  border: 1px solid $border-color;
+}
+
+#bar {
+  #menu {
+    float: left;
+    width: 200px;
+  }
+
+  #beer-menu {
+    background: image-url('seamless-paper.png');
+    float: left;
+  }
+
+  #napkin {
+    float: left;
+  }
+
+  #beer-napkin {
+    background: image-url('old-mathematics.png');
+  }
+
+  #bottle {
+    background-color: #999;
+    width: 100%;
+    float: left;
+  }
+}
