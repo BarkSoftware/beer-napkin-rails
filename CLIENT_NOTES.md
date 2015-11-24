@@ -26,10 +26,3 @@
  |        |                     Bottle                              |
  +------------------------------------------------------------------+
 
-
-var table = new beer.Table('#table', {
-  assets: [
-    { type: 'Button', collection: 'wireframe' },
-    { type: 'Label', collection: 'wireframe' },
-  ]
-});
