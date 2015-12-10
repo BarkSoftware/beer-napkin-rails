@@ -27,7 +27,7 @@ describe("Bottle", function() {
     });
 
     it("sets height", function() {
-      expect(bottle.canvas.height).toEqual(beer.default_options.bottle.height);
+      expect(bottle.canvas.height).toEqual(beer.options.bottle.height);
     });
   });
 });

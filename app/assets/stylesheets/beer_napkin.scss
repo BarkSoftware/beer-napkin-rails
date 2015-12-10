@@ -12,11 +12,15 @@ $border-color: #ccc;
 
   #beer-menu {
     background: image-url('seamless-paper.png');
-    float: left;
+    position: absolute;
+    left: 0px;
+    top: 0px;
   }
 
   #napkin {
-    float: left;
+    position: absolute;
+    left: 200px;
+    top: 0px;
   }
 
   #beer-napkin {
@@ -26,6 +30,8 @@ $border-color: #ccc;
   #bottle {
     background-color: #999;
     width: 100%;
-    float: left;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
   }
 }

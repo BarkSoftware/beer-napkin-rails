@@ -7,7 +7,7 @@
       table.element.find("#bottle").append(this.element);
       this.canvas = new fabric.Canvas("beer-bottle", {
         width: $(window).width(),
-        height: beer.default_options.bottle.height
+        height: beer.options.bottle.height
       });
     }
   });

@@ -23,11 +23,11 @@ describe("Menu", function() {
     });
 
     it("sets width", function() {
-      expect(menu.canvas.width).toEqual(beer.default_options.menu.width);
+      expect(menu.canvas.width).toEqual(beer.options.menu.width);
     });
 
     it("sets height", function() {
-      expect(menu.canvas.height).toEqual(beer.default_options.menu.height);
+      expect(menu.canvas.height).toEqual(beer.options.menu.height);
     });
 
     it("puts assets on the canvas", function() {

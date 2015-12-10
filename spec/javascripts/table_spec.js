@@ -36,7 +36,7 @@ describe("Table", function() {
       });
 
       it("defaults options", function() {
-        expect(table.options).toEqual(beer.default_options);
+        expect(table.options).toEqual(beer.options);
       });
     });
   });

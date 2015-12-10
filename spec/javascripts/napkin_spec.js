@@ -14,7 +14,7 @@ describe("Napkin", function() {
     });
 
     it("sets height and width", function() {
-      var options = beer.default_options.napkin;
+      var options = beer.options.napkin;
       expect(napkin.canvas.width).toEqual(options.width)
       expect(napkin.canvas.height).toEqual(options.height)
     });

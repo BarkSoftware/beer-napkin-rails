@@ -11,7 +11,7 @@ describe("AssetLoader", function() {
 
   describe("load", function() {
     it("returns assets", function() {
-      expect(loader.load(options)).toContain(jasmine.any(beer.assets.Button));
+      expect(loader.load(options)).toContain(jasmine.any(beer.AssetWrapper));
     });
   });
 });
