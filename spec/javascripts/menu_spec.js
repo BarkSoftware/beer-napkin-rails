@@ -10,10 +10,6 @@ describe("Menu", function() {
   });
 
   describe("#initialize", function() {
-    it("adds itself to the table", function() {
-      expect(tableStub.menu).toBe(menu);
-    });
-
     it("adds the canvas", function() {
       expect($("#table canvas#beer-menu")[0]).toBeInDOM();
     });

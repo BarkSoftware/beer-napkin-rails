@@ -1,30 +1,48 @@
 (function() {
   beer.AssetWrapper = beer.util.createClass(fabric.Group, {
-    initialize: function(asset) {
+    initialize: function(asset, table) {
+      this.table = table;
+      this.asset = asset;
       this.assetBox = new fabric.Rect({
         fill: 'transparent',
         selectable: false,
         height: 100,
         width: 200,
+        hasControls: false,
       });
       asset.scaleToWidth(200);
       this.callSuper('initialize', [this.assetBox, asset], {
-        selectable: true,
-        hoverCursor: 'pointer',
+        selectable: false,
         lockMovementX: true,
         lockMovementY: true,
-        hoverCursor: 'pointer',
         hasControls: false,
       });
-      this.on('selected', this.selectAsset);
+
+      this.on('mouseup', this.select);
     },
+
     assetBox: null,
-    assetSelected: false,
-    deselectAsset: function() {
+
+    active: false,
+
+    deselect: function() {
       this.assetBox.setFill('transparent');
+      this.active = false;
+      this.refresh();
     },
-    selectAsset: function() {
+
+    select: function() {
       this.assetBox.setFill('#ccc');
+      this.active = true;
+      this.refresh();
+    },
+
+    addShape: function(done) {
+      this.asset.addShape(done);
+    },
+
+    refresh: function() {
+      this.table.menu.canvas.renderAll();
     }
   });
 })();

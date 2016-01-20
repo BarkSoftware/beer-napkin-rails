@@ -1,12 +1,13 @@
 describe("AssetLoader", function() {
   var loader;
   var assets;
+  var table = {};
   var options = [
     { type: 'Button', collection: 'wireframe' }
   ];
 
   beforeEach(function() {
-    loader = new beer.AssetLoader();
+    loader = new beer.AssetLoader(table);
   });
 
   describe("load", function() {

@@ -1,0 +1,16 @@
+{
+  "lib": {
+    "name": "bower-rails generated lib assets",
+    "dependencies": {
+    }
+  },
+  "vendor": {
+    "name": "bower-rails generated vendor assets",
+    "dependencies": {
+      "fabric": "*",
+      "lodash": "*",
+      "async": "*",
+      "jasmine-sinon": "*"
+    }
+  }
+}

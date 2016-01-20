@@ -23,6 +23,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'jasmine-rails'
   gem 'jasmine-jquery-rails'
+  gem 'sinon-rails'
 end
 
 group :development do
