@@ -1,9 +1,3 @@
-var stub_options = {
-  assets: [
-    { type: 'Button', collection: 'wireframe' },
-  ]
-};
-
 var stub_canvas = function() {
   return {
     on: sinon.spy(),
@@ -13,9 +7,9 @@ var stub_canvas = function() {
 
 var stub_asset = function() {
   return {
-    deselect: sinon.spy(),
-    select: sinon.spy(),
-    shape: stub_shape,
+    deactivate: sinon.spy(),
+    activate: sinon.spy(),
+    createShape: sinon.spy(),
   };
 };
 

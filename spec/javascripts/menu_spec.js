@@ -1,33 +1,27 @@
 describe("Menu", function() {
-  var tableStub;
   var menu;
-  var stubAsset;
+  var stubAsset = {
+    element: function() {
+      return $("<div class='stub-asset'></div>");
+    }
+  };
 
   beforeEach(function() {
-    tableStub = { element: $("#table"), options: stub_options };
-    menu = new beer.Menu(tableStub);
-    stubAsset = new fabric.Rect();
+    assets = [stubAsset];
+    menu = new beer.Menu(assets);
   });
 
-  describe("#initialize", function() {
-    it("adds the canvas", function() {
-      expect($("#table canvas#beer-menu")[0]).toBeInDOM();
+  describe('#initialize', function() {
+    it('adds the assets to the dom', function() {
+      expect($("#menu .stub-asset")[0]).toBeInDOM();
     });
+  });
 
-    it("has a fabric Canvas", function() {
-      expect(menu.canvas).toEqual(jasmine.any(fabric.Canvas));
-    });
-
-    it("sets width", function() {
-      expect(menu.canvas.width).toEqual(beer.options.menu.width);
-    });
-
-    it("sets height", function() {
-      expect(menu.canvas.height).toEqual(beer.options.menu.height);
-    });
-
-    it("puts assets on the canvas", function() {
-      expect(menu.canvas.getObjects()).toContain(menu.assets[0]);
+  describe('#activeAsset', function() {
+    it('finds the first active asset', function() {
+      var activeAsset = { active: true };
+      assets.push(activeAsset);
+      expect(menu.activeAsset()).toBe(activeAsset)
     });
   });
 });

@@ -8,6 +8,20 @@ $border-color: #ccc;
   #menu {
     float: left;
     width: 200px;
+    .asset {
+      padding: 5px 25px;
+      h5 {
+        font-family: 'Coming Soon';
+        text-align: center;
+      }
+      img {
+        width: 150px;
+      }
+    }
+    .asset:hover {
+      cursor: pointer;
+      background-color: #ccc;
+    }
   }
 
   #beer-menu {

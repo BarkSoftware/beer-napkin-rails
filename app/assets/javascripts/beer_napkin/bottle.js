@@ -5,10 +5,6 @@
       this.table = table;
       this.element = $("<canvas id='beer-bottle'></canvas>");
       table.element.find("#bottle").append(this.element);
-      this.canvas = new fabric.Canvas("beer-bottle", {
-        width: $(window).width(),
-        height: beer.options.bottle.height
-      });
     }
   });
 })();
