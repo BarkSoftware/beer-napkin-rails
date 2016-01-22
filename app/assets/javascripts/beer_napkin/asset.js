@@ -35,9 +35,9 @@
       this.element().css('background-color', '#fff');
     },
 
-    createShape: function(done) {
+    createShape: function(bottle, napkin, done) {
       var constructor = _.bind(function(objects) {
-        done(new this.Shape(objects));
+        done(new this.Shape(objects, bottle, napkin));
       }, this);
       beer.util.loadSVG(this.svgUrl, constructor);
     },

@@ -1,6 +1,7 @@
 (function() {
   beer.Napkin = beer.util.createClass({
     initialize: function(table, menu) {
+      this.table = table;
       this.menu = menu;
       this.element = $("<canvas id='beer-napkin'></canvas>");
       table.element.find("#napkin").append(this.element);
@@ -10,6 +11,9 @@
         height: options.height
       });
       this.canvas.on('mouse:up', _.bind(this.addActiveAsset, this));
+      this.canvas.on('selection:cleared', _.bind(function() {
+        this.table.bottle.element.empty();
+      }, this));
     },
 
     addActiveAsset: function(mouseEvent) {
@@ -18,10 +22,11 @@
         var x = mouseEvent.e.layerX;
         var y = mouseEvent.e.layerY;
         var canvas = this.canvas;
-        asset.createShape(function(shape) {
+        asset.createShape(this.table.bottle, this, function(shape) {
           shape.setLeft(x);
           shape.setTop(y);
           canvas.add(shape);
+          canvas.setActiveObject(shape);
           asset.deactivate();
         });
       }

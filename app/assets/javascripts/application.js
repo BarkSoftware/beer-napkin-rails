@@ -14,7 +14,8 @@
 //= require async
 //= require twitter/bootstrap
 //= require fabric
-//= require lodash
+//= require lodash/dist/lodash.min.js
+//= require bind.js/dist/bind.min.js
 //= require ./beer_napkin/beer
 //= require ./beer_napkin/util
 //= require_tree ./beer_napkin

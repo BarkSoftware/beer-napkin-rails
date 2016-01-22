@@ -10,7 +10,8 @@
       "fabric": "*",
       "lodash": "*",
       "async": "*",
-      "jasmine-sinon": "*"
+      "jasmine-sinon": "*",
+      "bind.js": "*"
     }
   }
 }
