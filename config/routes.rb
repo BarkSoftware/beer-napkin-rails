@@ -1,10 +1,16 @@
 Rails.application.routes.draw do
+  devise_for :users, :controllers => { :omniauth_callbacks => 'callbacks' }
+  devise_scope :user do
+    get '/session/new(.:format)'        =>  'devise/sessions#new',      as: :new_user_session
+    get '/session/sign_out(.:format)'   =>  'devise/sessions#destroy',  as: :destroy_user_session
+  end
   mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
   root 'home#index'
+  resources :napkins
 
   # mount spec/javascripts/fixtures directory
   # https://github.com/travisjeffery/jasmine-jquery-rails/issues/4#issuecomment-29684484

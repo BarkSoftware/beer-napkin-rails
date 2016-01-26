@@ -48,3 +48,4 @@ config/initializers/secret_token.rb
 
 # Ignore pow environment settings
 .powenv
+.env

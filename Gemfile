@@ -8,9 +8,12 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 gem 'settingslogic'
 gem 'bower-rails'
-gem "therubyracer"
-gem "less-rails"
-gem "twitter-bootstrap-rails"
+gem 'therubyracer'
+gem 'less-rails'
+gem 'twitter-bootstrap-rails'
+gem 'devise'
+gem 'omniauth-github'
+gem 'dotenv-rails'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
@@ -24,6 +27,7 @@ group :development, :test do
   gem 'jasmine-rails'
   gem 'jasmine-jquery-rails'
   gem 'sinon-rails'
+  gem 'pry-rails'
 end
 
 group :development do
