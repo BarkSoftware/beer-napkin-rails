@@ -1,56 +1,86 @@
 (function(){
-  var Button = beer.util.createClass(fabric.Group, {
-    initialize: function(objects, bottle, napkin) {
-      this.bottle = bottle;
-      this.napkin = napkin;
-      this.svg = new fabric.Group(objects);
-      this.buttonText = new fabric.Text('Button', {
-        fill: beer.options.stroke_color,
-        fontFamily: 'Coming Soon',
-        textAlign: 'center',
-        left: 65,
-        top: 20
-      });
-
-      this.model = {
+  fabric.BeerButton = beer.util.createClass(fabric.Group, {
+    type: 'beerButton',
+    initialize: function(svgObjects, object) {
+      var object = typeof object !== 'undefined' ?  object : {};
+      var svgGroup = new fabric.Group(svgObjects);
+      this.model = _.merge({
         text: 'Button'
-      }
+      }, object.model);
 
-      var groupObjects = objects.concat([this.buttonText]);
-      var button = [this.svg, this.buttonText];
-      this.callSuper('initialize', button, {});
+      this.bottle = beer.table.bottle;
+      this.napkin = beer.table.napkin;
+
+      var buttonText;
+
+      if (object.buttonText) {
+        fabric.util.enlivenObjects([object.buttonText], _.bind(function(enlivenedObjects) {
+          buttonText = _.first(enlivenedObjects);
+        }, this));
+      }
+      else {
+        buttonText = new fabric.Text(this.model.text, {
+          fontFamily: 'Coming Soon',
+          textAlign: 'center',
+          left: 65,
+          top: 20
+        });
+      }
+      var button = [svgGroup, buttonText];
+      this.callSuper('initialize', button, object);
+
+      this.buttonText = buttonText;
+      this.svgGroup = svgGroup;
+
       this.on('selected', _.bind(function() {
-        this.bottle.renderShape(this);
+        beer.bottle.renderShape(this);
       }, this));
+      this.setText(this.model.text);
+    },
+    toObject: function() {
+      return _.merge(this.callSuper('toObject'), {
+        model: this.model,
+        svgGroup: this.svgGroup.toObject(),
+        buttonText: this.buttonText.toObject()
+      });
     },
     template: function() {
       return "<label>Button Text</label> <input type='text' id='button-text' name='button-text' />";
     },
-    bind: function() {
-      var updateText = _.bind(function(value) {
+    setText: function(value) {
         this.model.text = value;
         this.buttonText.set('text', value);
         var width = this.buttonText.width + 80;
         this.buttonText.setLeft(-1 * (width / 2) + 40);
-        this.svg.scaleToWidth(width);
-        this.svg.setScaleY(1);
-        this.svg.setLeft(-1 * (width / 2));
+        this.svgGroup.scaleToWidth(width);
+        this.svgGroup.setScaleY(1);
+        this.svgGroup.setLeft(-1 * (width / 2));
         this.setWidth(width);
-        this.napkin.canvas.renderAll();
-      }, this);
+        beer.napkin.canvas.renderAll();
+    },
+    bind: function() {
       return Bind(this.model, {
         text: {
           dom: '#button-text',
-          callback: updateText,
+          callback: _.bind(this.setText, this),
         }
       });
     }
   });
 
+  fabric.BeerButton.fromObject = function (object, callback) {
+    var _enlivenedObjects;
+    fabric.util.enlivenObjects(object.svgGroup.objects, function (enlivenedObjects) {
+      delete object.svgGroup.objects;
+      _enlivenedObjects = enlivenedObjects;
+    });
+    return new fabric.BeerButton(_enlivenedObjects, object);
+  };
+
   beer.assets.push(new beer.Asset({
     title: 'Button',
     order: 1,
-    Shape: Button,
+    Shape: fabric.BeerButton,
     name: 'button',
     svgUrl: '/beer-assets/button.svg',
   }));

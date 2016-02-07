@@ -21,5 +21,9 @@ describe("Table", function() {
     it("defaults options", function() {
       expect(table.options).toEqual(beer.options);
     });
+
+    it("assigns itself to the data hash on the element", function() {
+      expect($('#table').data('table')).toBe(table);
+    });
   });
 });

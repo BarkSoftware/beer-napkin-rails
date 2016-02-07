@@ -1,6 +1,4 @@
 class User < ActiveRecord::Base
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :omniauthable, :rememberable, :trackable
 
   def self.from_omniauth(auth)
@@ -8,6 +6,8 @@ class User < ActiveRecord::Base
       user.provider = auth.provider
       user.uid = auth.uid
       user.email = auth.info.email
+      user.image = auth.info.image
+      user.username = auth.info.nickname
     end
   end
 end

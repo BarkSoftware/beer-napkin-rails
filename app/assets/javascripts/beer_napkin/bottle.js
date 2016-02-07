@@ -1,6 +1,7 @@
 (function() {
   beer.Bottle = beer.util.createClass({
     initialize: function(table) {
+      beer.bottle = this;
       table.bottle = this;
       this.table = table;
       this.element = $("<div id='beer-bottle'></div>");

@@ -1,7 +1,8 @@
-var stub_canvas = function() {
+var stubCanvas = function() {
   return {
     on: sinon.spy(),
     add: sinon.spy(),
+    loadFromJSON: sinon.spy(),
   };
 };
 

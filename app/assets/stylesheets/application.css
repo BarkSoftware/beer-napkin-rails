@@ -12,5 +12,6 @@
  *
  *= require_tree .
  *= require bootstrap_and_overrides
+ *= require fontawesome
  *= require_self
  */

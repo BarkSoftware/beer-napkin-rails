@@ -15,8 +15,25 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
+  <div id="navbar" class="row">
+    <div class="col-xs-12">
+      <% if notice %>
+        <p class="notice"><%= notice %></p>
+      <% end %>
+      <% if alert %>
+        <p class="alert"><%= alert %></p>
+      <% end %>
+      <div id="user" class="pull-right">
+        <% if signed_in? %>
+          <img class="img-rounded" src="<%= current_user.image %>" alt="avatar image" />
+          <%= current_user.username %>
+          <a href="/session/sign_out">Log Out</a>
+        <% else %>
+          <a href="/users/auth/github">Log In w/ Github</a>
+        <% end %>
+      </div>
+    </div>
+  </div>
   <%= yield %>
 </body>
 </html>

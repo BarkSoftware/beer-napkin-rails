@@ -37,10 +37,6 @@
       this.refresh();
     },
 
-    addShape: function(done) {
-      this.asset.addShape(done);
-    },
-
     refresh: function() {
       this.table.menu.canvas.renderAll();
     }

@@ -11,7 +11,8 @@
       "lodash": "*",
       "async": "*",
       "jasmine-sinon": "*",
-      "bind.js": "*"
+      "bind.js": "*",
+      "fontawesome": "*"
     }
   }
 }

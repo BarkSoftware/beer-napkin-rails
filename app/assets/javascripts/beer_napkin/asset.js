@@ -37,7 +37,7 @@
 
     createShape: function(bottle, napkin, done) {
       var constructor = _.bind(function(objects) {
-        done(new this.Shape(objects, bottle, napkin));
+        done(new this.Shape(objects, { fill: beer.options.stroke_color }));
       }, this);
       beer.util.loadSVG(this.svgUrl, constructor);
     },
