@@ -13,7 +13,6 @@ gem 'less-rails'
 gem 'twitter-bootstrap-rails'
 gem 'devise'
 gem 'omniauth-github'
-gem 'dotenv-rails'
 gem 'carrierwave'
 gem 'carrierwave-base64'
 gem 'paper_trail', '~> 4.0.2'
@@ -34,6 +33,8 @@ group :development, :test do
   gem 'jasmine-jquery-rails'
   gem 'sinon-rails'
   gem 'pry-rails'
+  gem 'dotenv'
+  gem 'dotenv-rails'
 end
 
 group :development do

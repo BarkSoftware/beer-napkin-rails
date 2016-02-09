@@ -369,6 +369,7 @@ DEPENDENCIES
   carrierwave-base64
   coffee-rails (~> 4.1.0)
   devise
+  dotenv
   dotenv-rails
   fog
   jasmine-jquery-rails

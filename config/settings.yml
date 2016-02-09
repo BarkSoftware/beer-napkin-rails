@@ -1,6 +1,10 @@
 defaults: &defaults
+  beer_napkin_url: <%= ENV.fetch('BEER_NAPKIN_URL') %>
   client_version: 1.0.0
-  storage_method: <%= ENV.fetch('BEER_NAPKIN_STORAGE_METHOD', 'file') %>
+  github:
+    client_id: <%= ENV.fetch('GITHUB_CLIENT_ID') %>
+    client_secret: <%= ENV.fetch('GITHUB_CLIENT_SECRET') %>
+  storage_method: <%= ENV.fetch('BEER_NAPKIN_STORAGE_METHOD') %>
   aws:
     access_key_id: <%= ENV.fetch('AWS_ACCESS_KEY_ID') %>
     secret_access_key: <%= ENV.fetch('AWS_SECRET_ACCESS_KEY') %>

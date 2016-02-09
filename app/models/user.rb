@@ -8,6 +8,9 @@ class User < ActiveRecord::Base
       user.email = auth.info.email
       user.image = auth.info.image
       user.username = auth.info.nickname
+      user.token = auth.credentials.token
+    end.tap do |user|
+      user.update_attributes(token: auth.credentials.token)
     end
   end
 end
