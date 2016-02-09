@@ -1,6 +1,9 @@
 defaults: &defaults
   client_version: 1.0.0
-  storage_method: <%= ENV['BEER_NAPKIN_STORAGE_METHOD'] || 'file' %>
+  storage_method: <%= ENV.fetch('BEER_NAPKIN_STORAGE_METHOD', 'file') %>
+  aws:
+    access_key_id: <%= ENV.fetch('AWS_ACCESS_KEY_ID') %>
+    secret_access_key: <%= ENV.fetch('AWS_SECRET_ACCESS_KEY') %>
 
 development:
   <<: *defaults

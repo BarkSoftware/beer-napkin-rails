@@ -18,6 +18,8 @@ gem 'carrierwave'
 gem 'carrierwave-base64'
 gem 'paper_trail', '~> 4.0.2'
 gem 'cancan'
+gem 'net-ssh'
+gem 'fog'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
