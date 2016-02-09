@@ -1,5 +1,6 @@
 defaults: &defaults
   client_version: 1.0.0
+  storage_method: <%= ENV['BEER_NAPKIN_STORAGE_METHOD'] || 'file' %>
 
 development:
   <<: *defaults

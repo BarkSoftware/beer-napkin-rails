@@ -5,6 +5,7 @@ class NapkinsController < ApplicationController
 
   def create
     @napkin = Napkin.create! napkin_params
+    @napkin.image = params[:napkin][:image]
     redirect_to edit_napkin_path(@napkin)
   end
 
@@ -16,11 +17,16 @@ class NapkinsController < ApplicationController
   end
 
   def show
+    @napkin = Napkin.find(params[:id])
+    authorize! :manage, @napkin
   end
 
   def update
     @napkin = Napkin.find(params[:id]).tap do |napkin|
-      napkin.update_attributes!(napkin_params.slice(:json, :image_data))
+      napkin.json = params[:napkin][:json]
+      napkin.token = SecureRandom.uuid
+      napkin.image = params[:napkin][:image]
+      napkin.save!
     end
     redirect_to edit_napkin_path(@napkin)
   end
@@ -28,6 +34,9 @@ class NapkinsController < ApplicationController
   private
 
   def napkin_params
-    { user: current_user }.merge(params[:napkin])
+    {
+      user: current_user,
+      token: SecureRandom.uuid,
+    }.merge(params[:napkin])
   end
 end

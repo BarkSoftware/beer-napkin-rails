@@ -11,6 +11,7 @@
         width: options.width,
         height: options.height
       });
+      this.canvas.setBackgroundImage(beer.options.background, this.canvas.renderAll.bind(this.canvas));
       if (options.json) {
         this.canvas.loadFromDatalessJSON(options.json);
         this.canvas.deactivateAll().renderAll();
@@ -18,6 +19,7 @@
       this.canvas.on('mouse:up', _.bind(this.addActiveAsset, this));
       this.canvas.on('selection:cleared', _.bind(function() {
         this.table.bottle.element.empty();
+        this.table.menu.element.show();
       }, this));
     },
 

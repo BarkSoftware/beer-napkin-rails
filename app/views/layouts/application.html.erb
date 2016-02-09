@@ -17,23 +17,37 @@
 <body>
   <div id="navbar" class="row">
     <div class="col-xs-12">
-      <% if notice %>
-        <p class="notice"><%= notice %></p>
-      <% end %>
-      <% if alert %>
-        <p class="alert"><%= alert %></p>
+      <a href="/"><img id="logo" src="<%= image_path('logo.png') %>" alt="Beer Napkin Logo" /></a>
+      <%= link_to new_napkin_path, class: 'btn btn-primary btn-lg', id: 'new-napkin' do %>
+        <i class="fa fa-plus"></i> New Napkin
       <% end %>
       <div id="user" class="pull-right">
         <% if signed_in? %>
-          <img class="img-rounded" src="<%= current_user.image %>" alt="avatar image" />
-          <%= current_user.username %>
-          <a href="/session/sign_out">Log Out</a>
+          <span id="user-control" data-toggle="dropdown" class="pull-right dropdown dropdown-toggle">
+            <div class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+              <img src="<%= current_user.image %>" class="img-rounded user-img">
+              <span><%= current_user.username %></span>
+            </div>
+            <ul class="dropdown-menu">
+              <li>
+                <a href="/session/sign_out">
+                  <i class="fa fa-sign-out"></i> Log out
+                </a>
+              </li>
+            </ul>
+          </span>
         <% else %>
-          <a href="/users/auth/github">Log In w/ Github</a>
+          <a class="btn btn-default" href="/users/auth/github"><i class="fa fa-github"></i> Log In w/ Github</a>
         <% end %>
       </div>
     </div>
   </div>
+  <% if notice %>
+    <p class="notice"><%= notice %></p>
+  <% end %>
+  <% if alert %>
+    <p class="alert"><%= alert %></p>
+  <% end %>
   <%= yield %>
 </body>
 </html>

@@ -9,6 +9,7 @@
     },
 
     renderShape: function(shape) {
+      this.table.menu.element.hide();
       this.element.empty();
       this.element.append(shape.template);
       shape.bind();

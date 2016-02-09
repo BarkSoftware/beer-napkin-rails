@@ -14,6 +14,10 @@ gem 'twitter-bootstrap-rails'
 gem 'devise'
 gem 'omniauth-github'
 gem 'dotenv-rails'
+gem 'carrierwave'
+gem 'carrierwave-base64'
+gem 'paper_trail', '~> 4.0.2'
+gem 'cancan'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'

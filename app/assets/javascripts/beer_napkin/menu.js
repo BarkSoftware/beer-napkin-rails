@@ -6,6 +6,7 @@
   beer.Menu = beer.util.createClass({
     initialize: function(assets) {
       this.assets = assets;
+      this.element = $("#menu");
       _.each(this.assets, appendAsset);
     },
 

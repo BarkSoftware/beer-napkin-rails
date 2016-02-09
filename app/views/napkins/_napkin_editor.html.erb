@@ -1,13 +1,17 @@
 <div id="bar">
-  <div id="menu"></div>
-  <div id="napkin"></div>
+  <div id="menu">
+    <span class="help-block">
+      Select an object and click anywhere on the napkin to add it.
+    </span>
+  </div>
   <div id="bottle"></div>
+  <div id="napkin"></div>
 </div>
 <div id="bottom-menu" class="row">
   <div class="col-xs-12">
     <%= form_for napkin, html: { id: 'save-form' } do |f| %>
       <%= f.hidden_field :json %>
-      <%= f.hidden_field :image_data %>
+      <%= f.hidden_field :image %>
       <button id='save-button' class="btn btn-primary" type="submit"><i class="fa fa-save"></i> Save</button>
     <% end %>
   </div>
@@ -19,10 +23,11 @@
     var form = $("#save-form");
     form.submit(function() {
       var table = $('#bar').data('table');
+      table.napkin.canvas.deactivateAll();
       var json = JSON.stringify(table.napkin.canvas.toDatalessJSON());
-      var image_data = table.napkin.canvas.toDataURL();
+      var image_data = table.napkin.canvas.toDataURL('png');
       form.find('input#napkin_json').val(json);
-      form.find('input#napkin_image_data').val(image_data);
+      form.find('input#napkin_image').val(image_data);
     });
   });
 </script>
