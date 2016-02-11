@@ -19,6 +19,7 @@ gem 'paper_trail', '~> 4.0.2'
 gem 'cancan'
 gem 'net-ssh'
 gem 'fog'
+gem 'rails_12factor'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
