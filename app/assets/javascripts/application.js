@@ -11,7 +11,7 @@
 // about supported directives.
 //
 //= require jquery
-//= require async
+//= require async/dist/async.min.js
 //= require twitter/bootstrap
 //= require fabric
 //= require lodash/dist/lodash.min.js
