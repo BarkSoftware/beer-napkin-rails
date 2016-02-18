@@ -43,7 +43,7 @@ describe('Napkin', function() {
 
       it('initializes the canvas with given json', function() {
         napkin = new beer.Napkin(table, menu, options);
-        expect(napkin.canvas.loadFromJSON).toHaveBeenCalledWith(json);
+        expect(napkin.canvas.loadFromDatalessJSON).toHaveBeenCalledWith(json);
       });
     });
   });

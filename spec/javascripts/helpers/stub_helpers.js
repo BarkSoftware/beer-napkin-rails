@@ -1,9 +1,14 @@
 var stubCanvas = function() {
-  return {
+  var stub = {
     on: sinon.spy(),
     add: sinon.spy(),
     loadFromJSON: sinon.spy(),
+    loadFromDatalessJSON: sinon.spy(),
+    renderAll: sinon.spy(),
+    setBackgroundImage: sinon.spy(),
   };
+  stub.deactivateAll = sinon.stub().returns(stub);
+  return stub;
 };
 
 var stub_asset = function() {

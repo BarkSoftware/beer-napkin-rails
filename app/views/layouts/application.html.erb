@@ -21,6 +21,9 @@
       <%= link_to new_napkin_path, class: 'btn btn-primary btn-lg', id: 'new-napkin' do %>
         <i class="fa fa-plus"></i> New Napkin
       <% end %>
+      <div id="editor-buttons">
+        <button class="btn btn-default btn-sm" type="button" id="remove-active-object"><i class="fa fa-trash"></i></button>
+      </div>
       <div id="user" class="pull-right">
         <% if signed_in? %>
           <span id="user-control" data-toggle="dropdown" class="pull-right dropdown dropdown-toggle">

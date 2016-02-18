@@ -1,4 +1,31 @@
 (function() {
+  var bindBackspace = function(action) {
+    // Prevent the backspace key from navigating back.
+    $(document).unbind('keydown').bind('keydown', function (event) {
+      if (event.keyCode === 8 || event.keyCode === 46) {
+        var d = event.srcElement || event.target;
+        if ((d.tagName.toUpperCase() === 'INPUT' &&
+            (
+             d.type.toUpperCase() === 'TEXT' ||
+             d.type.toUpperCase() === 'PASSWORD' ||
+             d.type.toUpperCase() === 'FILE' ||
+             d.type.toUpperCase() === 'SEARCH' ||
+             d.type.toUpperCase() === 'EMAIL' ||
+             d.type.toUpperCase() === 'NUMBER' ||
+             d.type.toUpperCase() === 'DATE' )
+            ) ||
+          d.tagName.toUpperCase() === 'TEXTAREA') {
+          if (d.readOnly || d.disabled) {
+            event.preventDefault();
+          }
+        }
+        else {
+          event.preventDefault();
+          action();
+        }
+      }
+    });
+  }
   beer.Napkin = beer.util.createClass({
     initialize: function(table, menu, options) {
       beer.napkin = this;
@@ -21,6 +48,24 @@
         this.table.bottle.element.empty();
         this.table.menu.element.show();
       }, this));
+      var removeActiveAsset = _.bind(this.removeActiveObject, this);
+      bindBackspace(removeActiveAsset);
+      $('button#remove-active-object').click(removeActiveAsset);
+    },
+
+    removeActiveObject: function() {
+      var canvas = this.canvas;
+      var activeObj = canvas.getActiveObject();
+      if (activeObj) {
+        canvas.remove(activeObj);
+      }
+      var activeGroup = canvas.getActiveGroup();
+      if (activeGroup) {
+        canvas.deactivateAll();
+        _.each(activeGroup.objects, function(obj) {
+          canvas.remove(obj);
+        });
+      }
     },
 
     addActiveAsset: function(mouseEvent) {
