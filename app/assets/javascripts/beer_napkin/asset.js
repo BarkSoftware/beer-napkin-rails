@@ -6,7 +6,6 @@
       this.name = options.name;
       this.order = options.order;
       this.Shape = options.Shape;
-      this.active = options.active;
       this.svgUrl = options.svgUrl;
     },
 
@@ -18,21 +17,22 @@
         var image = $("<img src='" + this.svgUrl + "' />");
         var el = $("<div class='asset'><h5>" + this.title + "</h5></div>");
         el.prepend(image);
-        el.click(_.bind(this.activate, this));
+        el.click(_.bind(this.addToCanvas, this));
         this._el = el;
         return el;
       }
     },
 
-    activate: function() {
-      _.each(this.assets, function(a) { a.deactivate(); });
-      this.active = true;
-      this.element().css('background-color', '#ccc');
-    },
-
-    deactivate: function() {
-      this.active = false;
-      this.element().css('background-color', '#fff');
+    addToCanvas: function() {
+      var x = 15;
+      var y = 50;
+      var canvas = this.canvas;
+      this.createShape(beer.table.bottle, this, function(shape) {
+        shape.setLeft(x);
+        shape.setTop(y);
+        beer.napkin.canvas.add(shape);
+        beer.napkin.canvas.setActiveObject(shape);
+      });
     },
 
     createShape: function(bottle, napkin, done) {

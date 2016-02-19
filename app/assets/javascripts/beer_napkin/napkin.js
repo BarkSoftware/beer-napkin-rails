@@ -43,7 +43,6 @@
         this.canvas.loadFromDatalessJSON(options.json);
         this.canvas.deactivateAll().renderAll();
       }
-      this.canvas.on('mouse:up', _.bind(this.addActiveAsset, this));
       this.canvas.on('selection:cleared', _.bind(function() {
         this.table.bottle.element.empty();
         this.table.menu.element.show();
@@ -67,21 +66,5 @@
         });
       }
     },
-
-    addActiveAsset: function(mouseEvent) {
-      var asset = this.menu.activeAsset();
-      if (asset) {
-        var x = mouseEvent.e.layerX;
-        var y = mouseEvent.e.layerY;
-        var canvas = this.canvas;
-        asset.createShape(this.table.bottle, this, function(shape) {
-          shape.setLeft(x);
-          shape.setTop(y);
-          canvas.add(shape);
-          canvas.setActiveObject(shape);
-          asset.deactivate();
-        });
-      }
-    }
   });
 })();

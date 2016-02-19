@@ -8,6 +8,8 @@
       this.menu = new beer.Menu(beer.assets);
       this.napkin = new beer.Napkin(this, this.menu, this.options);
       this.bottle = new beer.Bottle(this);
+      beer.napkin = this.napkin;
+      beer.menu = this.menu;
     }
   });
 })();
