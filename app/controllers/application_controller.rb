@@ -6,4 +6,8 @@ class ApplicationController < ActionController::Base
   def new_session_path(scope)
     new_user_session_path
   end
+
+  def show_editor_buttons!
+    @show_editor_buttons = true
+  end
 end

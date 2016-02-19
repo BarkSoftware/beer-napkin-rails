@@ -26,6 +26,7 @@
       }
     });
   }
+
   beer.Napkin = beer.util.createClass({
     initialize: function(table, menu, options) {
       beer.napkin = this;
@@ -47,9 +48,20 @@
         this.table.bottle.element.empty();
         this.table.menu.element.show();
       }, this));
-      var removeActiveAsset = _.bind(this.removeActiveObject, this);
-      bindBackspace(removeActiveAsset);
-      $('button#remove-active-object').click(removeActiveAsset);
+      var removeActiveObject = _.bind(this.removeActiveObject, this);
+      bindBackspace(removeActiveObject);
+      var duplicateActiveObject = _.bind(this.duplicateActiveObject, this);
+      $('button#remove-active-object').click(removeActiveObject);
+      $('button#duplicate-object').click(duplicateActiveObject);
+    },
+
+    duplicateActiveObject: function() {
+      var canvas = this.canvas;
+      var activeObj = canvas.getActiveObject();
+      var object = fabric.util.object.clone(activeObj);
+      object.set('top', object.top + 15);
+      object.set('left', object.left + 15);
+      canvas.add(object);
     },
 
     removeActiveObject: function() {

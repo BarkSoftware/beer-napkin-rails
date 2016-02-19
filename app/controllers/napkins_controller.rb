@@ -1,4 +1,6 @@
 class NapkinsController < ApplicationController
+  before_filter :show_editor_buttons!, except: :index
+
   def new
     @napkin = Napkin.new
   end

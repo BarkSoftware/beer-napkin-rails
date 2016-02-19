@@ -21,9 +21,6 @@
       <%= link_to new_napkin_path, class: 'btn btn-primary btn-lg', id: 'new-napkin' do %>
         <i class="fa fa-plus"></i> New Napkin
       <% end %>
-      <div id="editor-buttons">
-        <button class="btn btn-default btn-sm" type="button" id="remove-active-object"><i class="fa fa-trash"></i></button>
-      </div>
       <div id="user" class="pull-right">
         <% if signed_in? %>
           <span id="user-control" data-toggle="dropdown" class="pull-right dropdown dropdown-toggle">
@@ -44,6 +41,14 @@
           <a class="btn btn-default" href="/users/auth/github"><i class="fa fa-github"></i> Log In w/ Github</a>
         <% end %>
       </div>
+      <% if show_editor_buttons? %>
+        <div id="editor-buttons" class="btn-group pull-right">
+          <button title="undo" class="btn btn-default" type="button" id="undo"><i class="fa fa-undo"></i></button>
+          <button title="redo" class="btn btn-default" type="button" id="redo"><i class="fa fa-rotate-right"></i></button>
+          <button title="duplicate" class="btn btn-default" type="button" id="duplicate-object"><i class="fa fa-copy"></i></button>
+          <button title="remove object" class="btn btn-default" type="button" id="remove-active-object"><i class="fa fa-trash"></i></button>
+        </div>
+      <% end %>
     </div>
   </div>
   <% if notice %>
