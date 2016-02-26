@@ -48,15 +48,16 @@
       return "<label>Button Text</label> <input type='text' id='button-text' name='button-text' />";
     },
     setText: function(value) {
-        this.model.text = value;
-        this.buttonText.set('text', value);
-        var width = this.buttonText.width + 80;
-        this.buttonText.setLeft(-1 * (width / 2) + 40);
-        this.svgGroup.scaleToWidth(width);
-        this.svgGroup.setScaleY(1);
-        this.svgGroup.setLeft(-1 * (width / 2));
-        this.setWidth(width);
-        beer.napkin.canvas.renderAll();
+      this.model.text = value;
+      this.buttonText.set('text', value);
+      var width = this.buttonText.width + 80;
+      this.buttonText.setLeft(-1 * (width / 2) + 40);
+      this.svgGroup.scaleToWidth(width);
+      this.svgGroup.setScaleY(1);
+      this.svgGroup.setLeft(-1 * (width / 2));
+      this.setWidth(width);
+      beer.napkin.canvas.renderAll();
+      beer.napkin.canvas.trigger('object:modified', { target: this });
     },
     bind: function() {
       return Bind(this.model, {
