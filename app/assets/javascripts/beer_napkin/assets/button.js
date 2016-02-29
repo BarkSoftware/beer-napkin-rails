@@ -57,7 +57,6 @@
       this.svgGroup.setLeft(-1 * (width / 2));
       this.setWidth(width);
       beer.napkin.canvas.renderAll();
-      beer.napkin.canvas.trigger('object:modified', { target: this });
     },
     bind: function() {
       return Bind(this.model, {

@@ -10,7 +10,7 @@
       this.bottle = new beer.Bottle(this);
       beer.napkin = this.napkin;
       beer.menu = this.menu;
-      this.eventListener = new beer.EventListener(this);
+      this.undoRedo = new beer.UndoRedo(this);
     }
   });
 })();
