@@ -45,8 +45,7 @@
         this.canvas.deactivateAll().renderAll();
       }
       this.canvas.on('selection:cleared', _.bind(function() {
-        this.table.bottle.element.empty();
-        this.table.menu.element.show();
+        this.table.bottle.remove();
       }, this));
       var removeActiveObject = _.bind(this.removeActiveObject, this);
       bindBackspace(removeActiveObject);

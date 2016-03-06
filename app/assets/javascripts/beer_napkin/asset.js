@@ -1,7 +1,7 @@
 (function(){
   beer.Asset = beer.util.createClass({
     initialize: function(options, assets) {
-      this.assets = assets || beer.assets; // would like to avoid reaching for this?
+      this.assets = assets || beer.assets;
       this.title = options.title;
       this.name = options.name;
       this.order = options.order;

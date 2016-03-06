@@ -44,8 +44,10 @@
         buttonText: this.buttonText.toObject()
       });
     },
-    template: function() {
-      return "<label>Button Text</label> <input type='text' id='button-text' name='button-text' />";
+    viewModel: function() {
+      var obj = {};
+      obj['button-text'] = { type: 'text', label: 'Button Text' };
+      return obj;
     },
     setText: function(value) {
       this.model.text = value;
