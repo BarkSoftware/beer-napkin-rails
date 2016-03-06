@@ -11,6 +11,7 @@
       beer.napkin = this.napkin;
       beer.menu = this.menu;
       this.undoRedo = new beer.UndoRedo(this);
+      this.layering = new beer.Layering(this);
     }
   });
 })();
