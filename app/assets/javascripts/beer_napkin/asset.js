@@ -14,9 +14,11 @@
         return this._el;
       }
       else {
-        var image = $("<img src='" + this.svgUrl + "' />");
         var el = $("<div class='asset'><h5>" + this.title + "</h5></div>");
-        el.prepend(image);
+        if (this.svgUrl) {
+          var image = $("<img src='" + this.svgUrl + "' />");
+          el.prepend(image);
+        }
         el.click(_.bind(this.addToCanvas, this));
         this._el = el;
         return el;
@@ -36,10 +38,18 @@
     },
 
     createShape: function(bottle, napkin, done) {
-      var constructor = _.bind(function(objects) {
-        done(new this.Shape(objects, { fill: beer.options.stroke_color }));
-      }, this);
-      beer.util.loadSVG(this.svgUrl, constructor);
+      var options = {
+        fill: beer.options.stroke_color,
+      };
+      if (this.svgUrl) {
+        var constructor = _.bind(function(objects) {
+          done(new this.Shape(objects, options));
+        }, this);
+        beer.util.loadSVG(this.svgUrl, constructor);
+      }
+      else {
+        done(new this.Shape(options));
+      }
     },
   });
 })();

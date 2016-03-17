@@ -17,7 +17,6 @@
       form.append("<div class='form-group'><button type='submit' class='btn btn-sm'>Ok</button></div>");
       this.element.append(form);
       form.submit(_.bind(function() {
-        shape.canvas.trigger('object:modified');
         shape.canvas.deactivateAll().renderAll();
         this.remove();
         return false;
@@ -30,14 +29,21 @@
       for (var key in viewModel) {
         var input = viewModel[key];
         result += "<div class='form-group'>"
-        result += "<label for='" + key +"'>" + input.label + "</label> ";
-        result += "<input type='text' id='" + key + "' name='" + key + "' />";
+        if (input.type === 'text') {
+          result += "<label for='" + key +"'>" + input.label + "</label> ";
+          result += "<input type='text' id='" + key + "' name='" + key + "' />";
+        }
+        else if (input.type === 'textarea') {
+          result += "<label for='" + key +"'>" + input.label + "</label> ";
+          result += "<textarea id='" + key + "' name='" + key + "'></textarea>";
+        }
         result += "</div>";
       }
       return result;
     },
 
     remove: function() {
+      this.table.napkin.canvas.trigger('object:modified');
       this.element.empty();
       this.menu.element.show();
     }
