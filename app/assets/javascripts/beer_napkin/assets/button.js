@@ -20,7 +20,7 @@
       }
       else {
         buttonText = new fabric.Text(this.model.text, {
-          fontFamily: 'Coming Soon',
+          fontFamily: beer.options.fontFamily,
           textAlign: 'center',
           left: 65,
           top: 20

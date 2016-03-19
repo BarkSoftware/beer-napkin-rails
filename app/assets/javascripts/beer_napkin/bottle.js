@@ -24,18 +24,49 @@
       shape.bind();
     },
 
+    appendInput: function(key, input) {
+      var result = "";
+      if (input.type === 'text') {
+        result += "<label for='" + key +"'>" + input.label + "</label> ";
+        result += "<input type='text' id='" + key + "' name='" + key + "' />";
+      }
+      else if (input.type === 'checkbox') {
+        result += "<div class='checkbox'>";
+        result += "<label>";
+        result += "<input type='checkbox' name='" + key + "' value=''>";
+        result += input.label;
+        result += "</label>";
+        result += "</div>";
+      }
+      else if (input.type === 'radio') {
+        result += "<div class='radio'>";
+        result += "<label>";
+        result += "<input type='radio' name='" + key + "' id='" + key + "' value='" + input.value + "' checked>";
+        result += input.label;
+        result += "</label>";
+        result += "</div>";
+      }
+      else if (input.type === 'textarea') {
+        result += "<label for='" + key +"'>" + input.label + "</label> ";
+        result += "<textarea id='" + key + "' name='" + key + "' class='form-control'></textarea>";
+      }
+      else if (input.type === 'h5') {
+        result += "<h5>" + input.label + "</h5>";
+      }
+      return result;
+    },
     buildTemplate: function(viewModel) {
       var result = "";
       for (var key in viewModel) {
-        var input = viewModel[key];
         result += "<div class='form-group'>"
-        if (input.type === 'text') {
-          result += "<label for='" + key +"'>" + input.label + "</label> ";
-          result += "<input type='text' id='" + key + "' name='" + key + "' />";
+        var input = viewModel[key];
+        if (Array.isArray(input)) {
+          for (var i = 0; i < input.length; i++) {
+            result += this.appendInput(key, input[i]);
+          }
         }
-        else if (input.type === 'textarea') {
-          result += "<label for='" + key +"'>" + input.label + "</label> ";
-          result += "<textarea id='" + key + "' name='" + key + "'></textarea>";
+        else {
+          result += this.appendInput(key, input);
         }
         result += "</div>";
       }
