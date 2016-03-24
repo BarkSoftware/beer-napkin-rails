@@ -7,7 +7,7 @@
         text: 'Lorem ipsum',
         fontFamily: beer.options.fontFamily,
         fontWeight: 'normal',
-        textDecoration: null,
+        textDecoration: '',
         textAlign: 'left',
       }, object);
 
@@ -75,15 +75,15 @@
           callback: _.bind(this.setText, this)
         },
         fontWeight: {
-          dom: '#paragraph-font-weight',
+          dom: 'input[name="paragraph-font-weight"]',
           callback: _.bind(this.setFontWeight, this)
         },
         textDecoration: {
-          dom: '#paragraph-text-decoration',
+          dom: 'input[name="paragraph-text-decoration"]',
           callback: _.bind(this.setTextDecoration, this)
         },
-        textDecoration: {
-          dom: '#paragraph-text-align',
+        textAlign: {
+          dom: 'input[name="paragraph-text-align"]',
           callback: _.bind(this.setTextAlign, this)
         },
       });

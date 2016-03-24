@@ -36,9 +36,14 @@
       table.element.find("#napkin").append(this.element);
       var options = _.merge(beer.options.napkin, options);
       this.canvas = new fabric.Canvas("beer-napkin", {
-        width: options.width,
-        height: options.height
+        width: beer.options.napkin.width(),
+        height: beer.options.napkin.height()
       });
+      $(window).resize(_.bind(function() {
+        this.canvas.setWidth(beer.options.napkin.width());
+        this.canvas.setHeight(beer.options.napkin.height());
+        this.canvas.calcOffset();
+      }, this));
       this.canvas.setBackgroundImage(beer.options.background, this.canvas.renderAll.bind(this.canvas));
       if (options.json) {
         this.canvas.loadFromDatalessJSON(options.json);

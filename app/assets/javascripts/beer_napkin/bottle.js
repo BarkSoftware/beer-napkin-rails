@@ -33,7 +33,7 @@
       else if (input.type === 'checkbox') {
         result += "<div class='checkbox'>";
         result += "<label>";
-        result += "<input type='checkbox' name='" + key + "' value=''>";
+        result += "<input type='checkbox' name='" + key + "' value=''/>";
         result += input.label;
         result += "</label>";
         result += "</div>";
@@ -41,7 +41,7 @@
       else if (input.type === 'radio') {
         result += "<div class='radio'>";
         result += "<label>";
-        result += "<input type='radio' name='" + key + "' id='" + key + "' value='" + input.value + "' checked>";
+        result += "<input type='radio' name='" + key + "' value='" + input.value + "'/>";
         result += input.label;
         result += "</label>";
         result += "</div>";
