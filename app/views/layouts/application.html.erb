@@ -16,8 +16,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <div id="navbar" class="row">
-    <div class="col-xs-12">
+  <div id="navbar" class="navbar navbar-default navbar-static-top">
       <a href="/"><img id="logo" src="<%= image_path('logo.png') %>" alt="Beer Napkin Logo" /></a>
       <%= link_to new_napkin_path, class: 'btn btn-primary btn-lg', id: 'new-napkin' do %>
         <i class="fa fa-plus"></i> New Napkin
@@ -52,7 +51,6 @@
           <button title="remove object" class="btn btn-default" type="button" id="remove-active-object"><i class="fa fa-trash"></i></button>
         </div>
       <% end %>
-    </div>
   </div>
   <% if notice %>
     <p class="notice"><%= notice %></p>

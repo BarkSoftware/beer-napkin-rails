@@ -12,6 +12,7 @@
     renderShape: function(shape) {
       this.table.menu.element.hide();
       this.element.empty();
+      $("#bottle").show();
       var form = $("<form></form");
       form.append(this.buildTemplate(shape.viewModel()));
       form.append("<div class='form-group'><button type='submit' class='btn btn-sm'>Ok</button></div>");
@@ -76,6 +77,7 @@
     remove: function() {
       this.table.napkin.canvas.trigger('object:modified');
       this.element.empty();
+      $("#bottle").hide();
       this.menu.element.show();
     }
   });

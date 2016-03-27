@@ -44,7 +44,7 @@
         this.canvas.setHeight(beer.options.napkin.height());
         this.canvas.calcOffset();
       }, this));
-      this.canvas.setBackgroundImage(beer.options.background, this.canvas.renderAll.bind(this.canvas));
+      this.canvas.setBackgroundColor(beer.options.background, this.canvas.renderAll.bind(this.canvas));
       if (options.json) {
         this.canvas.loadFromDatalessJSON(options.json);
         this.canvas.deactivateAll().renderAll();

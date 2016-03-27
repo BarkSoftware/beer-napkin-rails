@@ -3,6 +3,7 @@ $border-color: #ccc;
 #navbar {
   padding: 5px;
   border-bottom: 1px solid $border-color;
+  margin-bottom: 0px;
   #user-control {
     border-radius: 5px;
     background-color: #555;
@@ -16,6 +17,7 @@ $border-color: #ccc;
     background-color: #333;
   }
   #user {
+    margin-top: 8px;
     img {
       width: 40px;
       height: 40px;
@@ -35,8 +37,8 @@ $border-color: #ccc;
 
 #bottom-menu {
   position: absolute;
-  bottom: 5px;
-  right: 5px;
+  bottom: 15px;
+  right: 15px;
 }
 
 #beer-napkin {
@@ -77,14 +79,13 @@ $border-color: #ccc;
   }
 
   #napkin {
-    position: relative;
-    left: 200px;
-    top: 0px;
+    float: left;
   }
 
   #bottle {
     padding: 5px;
     float: left;
     width: 200px;
+    display: none;
   }
 }

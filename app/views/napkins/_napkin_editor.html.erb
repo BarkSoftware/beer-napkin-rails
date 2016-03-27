@@ -1,16 +1,14 @@
-<div id="bar">
+<div id="bar" class="clearfix">
   <div id="menu"></div>
   <div id="bottle"></div>
   <div id="napkin"></div>
 </div>
-<div id="bottom-menu" class="row">
-  <div class="col-xs-12">
-    <%= form_for napkin, html: { id: 'save-form' } do |f| %>
-      <%= f.hidden_field :json %>
-      <%= f.hidden_field :image %>
-      <button id='save-button' class="btn btn-primary" type="submit"><i class="fa fa-save"></i> Save</button>
-    <% end %>
-  </div>
+<div id="bottom-menu">
+  <%= form_for napkin, html: { id: 'save-form' } do |f| %>
+    <%= f.hidden_field :json %>
+    <%= f.hidden_field :image %>
+    <button id='save-button' class="btn btn-primary" type="submit"><i class="fa fa-save"></i> Save</button>
+  <% end %>
 </div>
 <script type='text/javascript'>
   $(function() {
