@@ -47,6 +47,9 @@
         result += "</label>";
         result += "</div>";
       }
+      else if (input.type === 'html') {
+        result += input.html;
+      }
       else if (input.type === 'textarea') {
         result += "<label for='" + key +"'>" + input.label + "</label> ";
         result += "<textarea id='" + key + "' name='" + key + "' class='form-control'></textarea>";

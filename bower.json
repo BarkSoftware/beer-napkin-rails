@@ -12,7 +12,8 @@
       "async": "*",
       "jasmine-sinon": "*",
       "bind.js": "*",
-      "fontawesome": "*"
+      "fontawesome": "*",
+      "dropzone": "*"
     }
   }
 }

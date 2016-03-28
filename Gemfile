@@ -20,6 +20,7 @@ gem 'cancan'
 gem 'net-ssh'
 gem 'fog'
 gem 'rails_12factor'
+gem 'js-routes'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'

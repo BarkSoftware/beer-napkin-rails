@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'home#index'
   resources :napkins
+  resources :uploads
 
   # mount spec/javascripts/fixtures directory
   # https://github.com/travisjeffery/jasmine-jquery-rails/issues/4#issuecomment-29684484
