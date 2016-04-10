@@ -1,5 +1,8 @@
 $border-color: #ccc;
 
+/* hide dropzone preview for now */
+.dz-preview { display: none; }
+
 #navbar {
   padding: 5px;
   border-bottom: 1px solid $border-color;

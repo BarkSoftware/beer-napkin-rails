@@ -18,7 +18,7 @@
     form.submit(function() {
       var table = $('#bar').data('table');
       table.napkin.canvas.deactivateAll();
-      var json = JSON.stringify(table.napkin.canvas.toDatalessJSON());
+      var json = JSON.stringify(table.napkin.canvas);
       var image_data = table.napkin.canvas.toDataURL('png');
       form.find('input#napkin_json').val(json);
       form.find('input#napkin_image').val(image_data);

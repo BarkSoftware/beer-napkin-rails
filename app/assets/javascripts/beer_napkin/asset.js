@@ -7,6 +7,10 @@
       this.order = options.order;
       this.Shape = options.Shape;
       this.svgUrl = options.svgUrl;
+      if (options.createShape) {
+        // allow more advanced assets to define their own
+        this.createShape = options.createShape;
+      }
     },
 
     element: function() {

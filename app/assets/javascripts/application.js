@@ -11,8 +11,10 @@
 // about supported directives.
 //
 //= require jquery
+//= require js-routes
 //= require async/dist/async.min.js
 //= require twitter/bootstrap
+//= require dropzone
 //= require fabric
 //= require lodash/dist/lodash.min.js
 //= require bind.js/dist/bind.min.js
