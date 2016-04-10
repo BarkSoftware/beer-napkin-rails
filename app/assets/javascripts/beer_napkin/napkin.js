@@ -1,37 +1,8 @@
 (function() {
-  var bindBackspace = function(action) {
-    // Prevent the backspace key from navigating back.
-    $(document).unbind('keydown').bind('keydown', function (event) {
-      if (event.keyCode === 8 || event.keyCode === 46) {
-        var d = event.srcElement || event.target;
-        if ((d.tagName.toUpperCase() === 'INPUT' &&
-            (
-             d.type.toUpperCase() === 'TEXT' ||
-             d.type.toUpperCase() === 'PASSWORD' ||
-             d.type.toUpperCase() === 'FILE' ||
-             d.type.toUpperCase() === 'SEARCH' ||
-             d.type.toUpperCase() === 'EMAIL' ||
-             d.type.toUpperCase() === 'NUMBER' ||
-             d.type.toUpperCase() === 'DATE' )
-            ) ||
-          d.tagName.toUpperCase() === 'TEXTAREA') {
-          if (d.readOnly || d.disabled) {
-            event.preventDefault();
-          }
-        }
-        else {
-          event.preventDefault();
-          action();
-        }
-      }
-    });
-  }
-
   beer.Napkin = beer.util.createClass({
-    initialize: function(table, menu, options) {
+    initialize: function(table, _menu, options) {
       beer.napkin = this;
       this.table = table;
-      this.menu = menu;
       this.element = $("<canvas id='beer-napkin'></canvas>");
       table.element.find("#napkin").append(this.element);
       var options = _.merge(beer.options.napkin, options);
@@ -53,7 +24,7 @@
         this.table.bottle.remove();
       }, this));
       var removeActiveObject = _.bind(this.removeActiveObject, this);
-      bindBackspace(removeActiveObject);
+      beer.util.bindBackspace(removeActiveObject);
       var duplicateActiveObject = _.bind(this.duplicateActiveObject, this);
       $('button#remove-active-object').click(removeActiveObject);
       $('button#duplicate-object').click(duplicateActiveObject);

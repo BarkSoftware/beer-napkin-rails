@@ -31,11 +31,8 @@
 
       this.buttonText = buttonText;
       this.svgGroup = svgGroup;
-
-      this.on('selected', _.bind(function() {
-        beer.bottle.renderShape(this);
-      }, this));
       this.setText(this.model.text);
+      (new beer.CommonAssetEvents()).bind(this);
     },
     toObject: function() {
       return _.merge(this.callSuper('toObject'), {

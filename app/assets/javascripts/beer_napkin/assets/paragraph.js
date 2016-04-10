@@ -21,10 +21,7 @@
       };
 
       this.callSuper('initialize', defaults.text, defaults);
-
-      this.on('selected', _.bind(function() {
-        beer.bottle.renderShape(this);
-      }, this));
+      (new beer.CommonAssetEvents()).bind(this);
     },
     viewModel: function() {
       var obj = {};
