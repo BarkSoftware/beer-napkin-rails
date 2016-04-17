@@ -23,7 +23,7 @@
           fontFamily: beer.options.fontFamily,
           textAlign: 'center',
           left: 65,
-          top: 20
+          top: 12
         });
       }
       var button = [svgGroup, buttonText];
@@ -81,6 +81,6 @@
     order: 1,
     Shape: fabric.BeerButton,
     name: 'button',
-    svgUrl: '/beer-assets/button.svg',
+    svgUrl: '/beer-assets/button2.svg',
   }));
 })();

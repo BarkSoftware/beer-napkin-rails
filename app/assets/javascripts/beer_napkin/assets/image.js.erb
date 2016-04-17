@@ -6,10 +6,10 @@
     initialize: function(objects, object) {
       var objects = typeof objects !== 'undefined' ?  objects : [];
       var object = typeof object !== 'undefined' ?  object : {};
-      var model = typeof object.model !== 'undefined' ?  object.model : {};
-      this.model = {
-        imageFilter: model.imageFilter
+      var model = typeof object.model !== 'undefined' ?  object.model : {
+        imageFilter: ''
       };
+      this.model = { imageFilter: model.imageFilter };
 
       var img = objects[0];
       this.image = img;
@@ -21,6 +21,7 @@
     },
     setFilter: function(filter) {
       if (this.image) {
+        this.model.imageFilter = filter;
         this.image.filters.pop();
         var canvas = beer.napkin.canvas;
         if (filter === 'grayscale') {
@@ -41,6 +42,11 @@
         { type: 'radio', label: 'Grayscale', value: 'grayscale' }
       ];
       return obj;
+    },
+    toObject: function() {
+      return _.merge(this.callSuper('toObject'), {
+        model: this.model
+      });
     },
     bind: function() {
       var updateImageUrl = _.bind(function(url) {
