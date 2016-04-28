@@ -7,6 +7,7 @@
       this.order = options.order;
       this.Shape = options.Shape;
       this.svgUrl = options.svgUrl;
+      this.menuImage = options.menuImage;
       if (options.createShape) {
         // allow more advanced assets to define their own
         this.createShape = options.createShape;
@@ -21,6 +22,10 @@
         var el = $("<div class='asset'><h5>" + this.title + "</h5></div>");
         if (this.svgUrl) {
           var image = $("<img src='" + this.svgUrl + "' />");
+          el.prepend(image);
+        }
+        if (this.menuImage) {
+          var image = $("<img src='" + this.menuImage + "' />");
           el.prepend(image);
         }
         el.click(_.bind(this.addToCanvas, this));
