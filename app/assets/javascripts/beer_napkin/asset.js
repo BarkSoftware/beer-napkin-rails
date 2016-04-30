@@ -25,7 +25,7 @@
           var image = $("<img src='" + this.svgUrl + "' />");
           el.prepend(image);
         }
-        if (this.menuImageWidth) {
+        if (this.menuImage) {
           var image = '';
           if (this.menuImageWidth) {
             image = $("<img src='" + this.menuImage + "' style='width: " + this.menuImageWidth + "px;' />");
