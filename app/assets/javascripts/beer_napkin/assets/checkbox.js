@@ -2,26 +2,15 @@
   fabric.BeerCheckbox = beer.util.createClass(fabric.Group, {
     type: 'beerCheckbox',
     initialize: function(objects, object) {
-      if (!Array.isArray(objects)) {
-        object = objects;
-        objects = [];
-      }
-      var object = typeof object !== 'undefined' ?  object : {};
       this.model = _.merge({
-        checked: true
+        checked: 'checked',
       }, object.model);
-
-      var constructor = _.bind(function(objects) {
-        this.addWithUpdate(new fabric.Group(objects, { selectable: false }));
-        this.setCoords();
-        this.napkin.canvas.renderAll();
-      }, this);
-
-      var svgUrl = '/beer-assets/checkbox-checked.svg';
-      beer.util.loadSVG(svgUrl, constructor);
+      _.merge(object, { width: 50, height: 50 });
 
       this.bottle = beer.table.bottle;
       this.napkin = beer.table.napkin;
+      //this.svg = new fabric.Group(this.svgObjects);
+      //objects.push(this.svg);
 
       this.callSuper('initialize', objects, object);
 
@@ -34,26 +23,32 @@
     },
     viewModel: function() {
       var obj = {};
-      obj['checkbox-checked'] = { type: 'checkbox', label: 'Checked', value: '1' };
+      obj['checkbox-checked'] = [
+        { type: 'radio', label: 'Checked', value: 'checked' },
+        { type: 'radio', label: 'Unchecked', value: 'unchecked' }
+      ];
       return obj;
     },
     setChecked: function(value) {
       this.model.checked = value;
-      var svgUrl = '';
-      debugger;
-      if (value) {
-        svgUrl = '/beer-assets/checkbox-checked.svg';
-      }
-      else {
-        svgUrl = '/beer-assets/checkbox-unchecked.svg';
-      }
-      _.each(this._objects, _.bind(function(obj) {
-        this.removeWithUpdate(obj);
-      }, this));
-      beer.util.loadSVG(svgUrl, _.bind(function(objects) {
-        this.addWithUpdate(new fabric.Group(objects));
+      var svgUrl = '/beer-assets/checkbox-' + value + '.svg';
+
+      fabric.loadSVGFromURL(svgUrl, _.bind(function(objects) {
+        var group = new fabric.Group(objects);
+        this.set({ width: group.getWidth(), height: group.getHeight() })
+        this.remove(this.svg);
+        this.svg = group;
+        this.add(this.svg);
         this.setCoords();
+        var scaleX = this.getScaleX();
+        var scaleY = this.getScaleY();
+        var left = (-1 * (this.getWidth() / 2)) / scaleX;
+        var top = (-1 * (this.getHeight() / 2)) / scaleY;
+        group.set({ left: left, top: top });
         this.napkin.canvas.renderAll();
+        debugger;
+      }, this), _.bind(function(item, object) {
+        object.set('id', item.getAttribute('id'));
       }, this));
     },
     bind: function() {
@@ -79,6 +74,9 @@
     order: 1,
     Shape: fabric.BeerCheckbox,
     name: 'checkbox',
-    menuImage: '/beer-assets/checkbox-checked.svg'
+    menuImage: '/beer-assets/checkbox-checked.svg',
+    createShape: function(bottle, napkin, done) {
+      done(new fabric.BeerCheckbox([], {  fill: beer.options.stroke_color }));
+    }
   }));
 })();
