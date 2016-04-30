@@ -34,7 +34,7 @@
       else if (input.type === 'checkbox') {
         result += "<div class='checkbox'>";
         result += "<label>";
-        result += "<input type='checkbox' name='" + key + "' value=''/>";
+        result += "<input type='checkbox' name='" + key + "' value='" + input.value + "'/>";
         result += input.label;
         result += "</label>";
         result += "</div>";

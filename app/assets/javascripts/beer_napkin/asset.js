@@ -7,6 +7,8 @@
       this.order = options.order;
       this.Shape = options.Shape;
       this.svgUrl = options.svgUrl;
+      this.menuImage = options.menuImage;
+      this.menuImageWidth = options.menuImageWidth;
       if (options.createShape) {
         // allow more advanced assets to define their own
         this.createShape = options.createShape;
@@ -21,6 +23,17 @@
         var el = $("<div class='asset'><h5>" + this.title + "</h5></div>");
         if (this.svgUrl) {
           var image = $("<img src='" + this.svgUrl + "' />");
+          el.prepend(image);
+        }
+        if (this.menuImageWidth) {
+          var image = '';
+          if (this.menuImageWidth) {
+            image = $("<img src='" + this.menuImage + "' style='width: " + this.menuImageWidth + "px;' />");
+          }
+          else
+          {
+            image = $("<img src='" + this.menuImage + "' />");
+          }
           el.prepend(image);
         }
         el.click(_.bind(this.addToCanvas, this));
