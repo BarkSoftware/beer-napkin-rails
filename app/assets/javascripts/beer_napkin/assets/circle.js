@@ -53,6 +53,7 @@
     Shape: fabric.BeerCircle,
     name: 'circle',
     menuImage: '/beer-assets/circle.svg',
+    menuImageWidth: 40,
     createShape: function(bottle, napkin, done) {
       done(new fabric.BeerCircle([], {  fill: beer.options.stroke_color }));
     }

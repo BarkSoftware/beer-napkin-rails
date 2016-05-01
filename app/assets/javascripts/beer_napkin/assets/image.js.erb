@@ -98,6 +98,8 @@
     Shape: fabric.BeerImage,
     name: 'image',
     svgUrl: null,
+    menuImage: defaultImageUrl,
+    menuImageWidth: 80,
     createShape: function(_bottle, _napkin, done) {
       fabric.Image.fromURL(defaultImageUrl, _.bind(function(img) {
         done(new fabric.BeerImage([img], {}));
